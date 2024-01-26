@@ -8,11 +8,11 @@
 ## Contrat Deploy:
 
 ```console
-# altta ki curl ile başlayan komutu girdikten sonra 1 i seçelim:
+# After entering the command starting with curl below, let's select 1:
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 
-# solana cli kurulumu - komutları tek tek kullanalım.
+# solana cli installation - let's use the commands one by one.
 sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
 PATH="/root/.local/share/solana/install/active_release/bin:$PATH"
 solana config set --url https://staging-rpc.dev.eclipsenetwork.xyz
