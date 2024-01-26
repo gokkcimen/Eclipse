@@ -1,8 +1,8 @@
 # Eclipse
 
-> Tweette detaylar mevcuttu.
+> Details were available in the tweet.
 
-> İşlemleri herhangi bir sunucumuzda yapalım muhim değil.
+> It doesn't matter if we do the operations on any of our servers.
 
 
 ## Contrat Deploy:
@@ -17,19 +17,17 @@ sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
 PATH="/root/.local/share/solana/install/active_release/bin:$PATH"
 solana config set --url https://staging-rpc.dev.eclipsenetwork.xyz
 
-# bu komut sonrası => key oluşacak, şifre belirleyip mnemonicleri ve cüzdan adresini kaydediyoruz
+# after this command => key will be created, We set a password and save the mnemonics and wallet address.
 solana-keygen new
 
-# bu komutta cüzdana token alıyoruz
+# In this command we get tokens to the wallet
 solana airdrop 10
 
-# bu komut çalışması için 8 ram lazım - github swap space repom ile çözersiniz.
+# for this command to work 8 ram required
 solana-test-validator
-# komut çalışınca ctrl c ile durdurabilirsiniz.
+# Once the command runs, you can stop it with ctrl c.
 
-# 5 gün sonra not - 8 RAM ile dahi çözülmediyse farklı bir durum söz konusu - chatte yardım isteyiniz.
-
-# nodejs kurulumu - komutları tek tek kullanalım
+# nodejs installation - let's use the commands one by one
 sudo apt-get install -y ca-certificates curl gnupg
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
@@ -39,22 +37,22 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.co
 sudo apt-get update
 sudo apt-get install nodejs -y
 
-# kontrat deploy işlemini gerçekleştirelim
+# Let's perform the contract deployment process
 git clone https://github.com/solana-labs/example-helloworld
 cd example-helloworld
 npm install
 
-# burda biraz bekletecek rusttan dolayı - uzun sürebilir.
+# There will be a bit of a wait here due to rust - it may take a long time.
 npm run build:program-rust
 
-# program id not edin - FORMDA SONRADAN BU ID KULLANACAKSINIZ
+# note the program id - YOU WILL USE THIS ID LATER IN THE FORM
 solana program deploy dist/program/helloworld.so
 npm run start
-# success çıktısı verecek en sonda.
+# It will give success output at the end.
 
 ```
 
-## Bridge işlemi:
+## Bridge operation:
 
 ```console
 sudo apt update -y && sudo apt upgrade -y
@@ -71,8 +69,8 @@ node deposit.js <solanaAdresi> 0x7C9e161ebe55000a3220F972058Fb83273653a6e 500000
 # solana cüzdanı yukarıda oluşturduk onu import edin yeni profilde.
 ```
 
-> başarılıysa success ve tx çıktısı verecek
+> If successful, it will give success and tx output.
 
-> https://explorer.dev.eclipsenetwork.xyz/?cluster=testnet burdan solana cüzdanı kontrol edip eth var mı yok mu bakıyoruz. varsa ok.
+> https://explorer.dev.eclipsenetwork.xyz/?cluster=testnet From here we check the wallet and see if there is eth or not. ok if there is.
 
-> Formu doldurun: https://docs.google.com/forms/d/e/1FAIpQLSfJQCFBKHpiy2HVw9lTjCj7k0BqNKnP6G1cd0YdKhaPLWD-AA/viewform
+> Fill out the form: https://docs.google.com/forms/d/e/1FAIpQLSfJQCFBKHpiy2HVw9lTjCj7k0BqNKnP6G1cd0YdKhaPLWD-AA/viewform
